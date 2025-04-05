@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --font-coda: "Coda", "system-ui";
+  --font-nunito: "Nunito", "sans-serif";
+
   --color-blue: #3294f8;
   --color-base-title: #e7edf4;
   --color-base-subtitle: #c4d4e3;
