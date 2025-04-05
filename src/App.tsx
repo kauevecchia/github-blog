@@ -1,5 +1,3 @@
-import "./App.css";
-
 export function App() {
-  return <></>;
+  return <h1 className="font-bold text-red-500">Hello world</h1>
 }
