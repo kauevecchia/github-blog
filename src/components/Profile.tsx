@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface GithubUser {
   avatarUrl: string;
   user: string;
@@ -8,6 +10,8 @@ interface GithubUser {
 }
 
 export function Profile() {
+  const [userInfo, setUserInfo] = useState<GithubUser | null>(null);
+
   return (
     <section>
       <img src="" alt="" />
@@ -18,10 +22,6 @@ export function Profile() {
         </div>
         <p></p>
         <div>
-          <div>
-            <img src="" alt="" />
-            <span></span>
-          </div>
           <div>
             <img src="" alt="" />
             <span></span>
