@@ -1,3 +1,12 @@
+interface GithubUser {
+  avatarUrl: string;
+  user: string;
+  name: string;
+  bio: string;
+  htmlUrl: string;
+  followers: number;
+}
+
 export function Profile() {
   return (
     <section>
