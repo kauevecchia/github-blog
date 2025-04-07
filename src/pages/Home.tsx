@@ -1,5 +1,9 @@
+import { Profile } from "../components/Profile";
+
 export function Home() {
-    return (
-        
-    )
+  return (
+    <div className="max-w-5xl">
+      <Profile />
+    </div>
+  );
 }
