@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Profile } from "../components/Profile";
 import { api } from "../lib/axios";
+import { Post } from "../components/Post";
 
 export interface Issue {
   id: number;
@@ -34,6 +35,14 @@ export function Home() {
   return (
     <div className="max-w-5xl">
       <Profile />
+
+      <div className="grid grid-cols-2 gap-6">
+        {issuesInfo ? (
+          issuesInfo?.map((issue) => <Post issueInfo={issue} />)
+        ) : (
+          <p>Não encontramos resultado para sua pesquisa</p>
+        )}
+      </div>
     </div>
   );
 }
