@@ -20,7 +20,11 @@ export function Post({ issueInfo }: PostProps) {
             : `${diffInDays} dia${diffInDays > 1 ? "s" : ""} atrás`}
         </p>
       </div>
-      <p className="text-base-text">{issueInfo.body}</p>
+      <p className="text-base-text">
+        {issueInfo.body.length > 180
+          ? issueInfo.body.slice(0, 180) + "..."
+          : issueInfo.body}
+      </p>
     </div>
   );
 }
