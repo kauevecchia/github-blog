@@ -3,9 +3,9 @@ import { Header } from "../components/Header";
 
 export function DefaultLayout() {
   return (
-    <div className="font-nunito min-h-screen">
+    <div className="font-nunito min-h-screen leading-[1.6]">
       <Header />
-      <main className="bg-base-background max-w-6xl">
+      <main className="bg-base-background flex flex-col items-center pb-12">
         <Outlet />
       </main>
     </div>
