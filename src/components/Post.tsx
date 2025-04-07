@@ -5,6 +5,11 @@ interface PostProps {
 }
 
 export function Post({ issueInfo }: PostProps) {
+  const createdAtDate = new Date(issueInfo.created_at);
+  const now = new Date();
+  const diffInMs = now.getTime() - createdAtDate.getTime();
+  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
   return (
     <div>
       <div>
