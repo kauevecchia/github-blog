@@ -14,7 +14,11 @@ export function Post({ issueInfo }: PostProps) {
     <div>
       <div>
         <h3>{issueInfo.title}</h3>
-        <p>{}</p>
+        <p>
+          {diffInDays === 0
+            ? "Postado hoje"
+            : `${diffInDays} dia${diffInDays > 1 ? "s" : ""} atrás`}
+        </p>
       </div>
       <p>{issueInfo.body}</p>
     </div>
