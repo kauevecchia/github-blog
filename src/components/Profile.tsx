@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../lib/axios";
 
 interface GithubUser {
   avatarUrl: string;
@@ -11,6 +12,16 @@ interface GithubUser {
 
 export function Profile() {
   const [userInfo, setUserInfo] = useState<GithubUser | null>(null);
+
+  async function fetchUserInfo() {
+    const response = await api.get("/users/kauevecchia");
+
+    setUserInfo(response.data);
+  }
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
 
   return (
     <section>
