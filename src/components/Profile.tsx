@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../lib/axios";
 
 interface GithubUser {
-  avatarUrl: string;
+  avatar_url: string;
   user: string;
   name: string;
   bio: string;
@@ -25,21 +25,24 @@ export function Profile() {
 
   return (
     <section>
-      <img src="" alt="" />
+      <img src={userInfo?.avatar_url} alt="" />
       <div>
         <div>
-          <h1></h1>
-          <a href=""></a>
+          <h1>{userInfo?.name}</h1>
+          <a href={userInfo?.htmlUrl}>
+            <span></span>
+            <img src="" alt="" />
+          </a>
         </div>
-        <p></p>
+        <p>{userInfo?.bio}</p>
         <div>
           <div>
             <img src="" alt="" />
-            <span></span>
+            <span>{userInfo?.user}</span>
           </div>
           <div>
             <img src="" alt="" />
-            <span></span>
+            <span>{userInfo?.followers}</span>
           </div>
         </div>
       </div>
