@@ -11,16 +11,16 @@ export function Post({ issueInfo }: PostProps) {
   const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
   return (
-    <div>
-      <div>
-        <h3>{issueInfo.title}</h3>
-        <p>
+    <div className="bg-base-post hover:border-base-label flex cursor-pointer flex-col gap-5 rounded-lg border-2 border-transparent p-8 transition duration-300 hover:scale-105">
+      <div className="flex items-center justify-between gap-4">
+        <h3 className="text-base-title text-xl">{issueInfo.title}</h3>
+        <p className="text-base-span text-sm">
           {diffInDays === 0
             ? "Postado hoje"
             : `${diffInDays} dia${diffInDays > 1 ? "s" : ""} atrás`}
         </p>
       </div>
-      <p>{issueInfo.body}</p>
+      <p className="text-base-text">{issueInfo.body}</p>
     </div>
   );
 }
