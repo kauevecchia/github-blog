@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Issue } from "./Home";
 import { useEffect, useState } from "react";
 import { api } from "../lib/axios";
@@ -18,6 +18,8 @@ export function PostDetails() {
   const now = new Date();
   const diffInMs = now.getTime() - createdAtDate.getTime();
   const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+  const navigate = useNavigate();
 
   const { issueNumber } = useParams();
 
@@ -39,7 +41,10 @@ export function PostDetails() {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
-              <button className="hover:border-blue flex cursor-pointer items-center justify-center gap-2 border-b-2 border-transparent">
+              <button
+                className="hover:border-blue flex cursor-pointer items-center justify-center gap-2 border-b-2 border-transparent"
+                onClick={() => navigate("/")}
+              >
                 <img src={arrowLeft} />
                 <span className="text-blue text-xs">VOLTAR</span>
               </button>
