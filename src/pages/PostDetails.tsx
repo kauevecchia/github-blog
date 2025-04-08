@@ -7,6 +7,9 @@ import linkSvg from "../assets/link-svg.svg";
 import githubSvg from "../assets/github.svg";
 import calendarSvg from "../assets/calendar.svg";
 import commentSvg from "../assets/comment.svg";
+import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export function PostDetails() {
   const [postInfo, setPostInfo] = useState<Issue | null>(null);
@@ -73,7 +76,55 @@ export function PostDetails() {
       </div>
 
       <div className="bg-base-background rounded-b-lg px-8 py-10 shadow-md shadow-slate-800">
-        {postInfo?.body}
+        <ReactMarkdown
+          components={{
+            p: (props) => <p className="text-base-text" {...props} />,
+            h1: (props) => (
+              <h1 className="text-base-title font-bold" {...props} />
+            ),
+            h2: (props) => (
+              <h2 className="text-base-title font-bold" {...props} />
+            ),
+            h4: (props) => (
+              <h4 className="text-base-title font-bold" {...props} />
+            ),
+            li: (props) => (
+              <li className="text-base-text ml-6 list-disc" {...props} />
+            ),
+            a: (props) => <a className="text-blue-500 underline" {...props} />,
+            code: ({
+              inline,
+              className,
+              children,
+              ...props
+            }: {
+              inline?: boolean;
+              className?: string;
+              children?: React.ReactNode;
+            }) => {
+              const match = /language-(\w+)/.exec(className || "");
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  style={dracula}
+                  language={match[1]}
+                  PreTag="div"
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, "")}
+                </SyntaxHighlighter>
+              ) : (
+                <code
+                  className="bg-base-border rounded px-1 py-0.5 font-mono text-sm text-blue-400"
+                  {...props}
+                >
+                  {children}
+                </code>
+              );
+            },
+          }}
+        >
+          {postInfo?.body}
+        </ReactMarkdown>
       </div>
     </section>
   );
