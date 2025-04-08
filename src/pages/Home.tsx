@@ -12,6 +12,7 @@ type SearchFormInputs = z.infer<typeof searchFormSchema>;
 
 export interface Issue {
   id: number;
+  number: number;
   title: string;
   body: string;
   comments: number;
