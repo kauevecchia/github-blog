@@ -20,5 +20,44 @@ export function PostDetails() {
     setPostInfo(response.data);
   }
 
-  return <section></section>;
+  return (
+    <section>
+      <div>
+        <div>
+          <div>
+            <div>
+              <button>
+                <img src={} />
+                <span>VOLTAR</span>
+              </button>
+              <a>
+                <span>VER NO GITHUB</span>
+                <img src={} />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h1>{}</h1>
+            <div>
+              <div>
+                <img src={} />
+                <span>{}</span>
+              </div>
+              <div>
+                <img src={} />
+                <span>{}</span>
+              </div>
+              <div>
+                <img src={} />
+                <span>{} comentários</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>{}</div>
+    </section>
+  );
 }
