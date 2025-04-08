@@ -36,30 +36,36 @@ export function PostDetails() {
                 <span className="text-blue text-xs">VOLTAR</span>
               </button>
               <a
-                href={}
+                href={postInfo?.html_url}
                 className="hover:border-blue flex cursor-pointer items-center justify-center gap-2 border-b-2 border-transparent"
                 target="_blank"
               >
                 <span className="text-blue text-xs">VER NO GITHUB</span>
-                <img src={linkSvg} alt="" />
+                <img src={linkSvg} />
               </a>
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <h1 className="text-base-text text-2xl font-bold">{}</h1>
+            <h1 className="text-base-text text-2xl font-bold">
+              {postInfo?.title}
+            </h1>
             <div className="flex gap-6">
               <div className="flex items-center justify-center gap-2">
-                <img src={githubSvg} alt="" className="h-5 w-5" />
+                <img src={githubSvg} className="h-5 w-5" />
+                <span className="text-base-subtitle">
+                  {postInfo?.user.login}
+                </span>
+              </div>
+              <div className="flex items-center justify-center gap-2">
+                <img src={calendarSvg} className="h-5 w-5" />
                 <span className="text-base-subtitle">{}</span>
               </div>
               <div className="flex items-center justify-center gap-2">
-                <img src={calendarSvg} alt="" className="h-5 w-5" />
-                <span className="text-base-subtitle">{}</span>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <img src={commentSvg} alt="" className="h-5 w-5" />
-                <span className="text-base-subtitle">{} comentários</span>
+                <img src={commentSvg} className="h-5 w-5" />
+                <span className="text-base-subtitle">
+                  {postInfo?.comments} comentários
+                </span>
               </div>
             </div>
           </div>
@@ -67,7 +73,7 @@ export function PostDetails() {
       </div>
 
       <div className="bg-base-background rounded-b-lg px-8 py-10 shadow-md shadow-slate-800">
-        {}
+        {postInfo?.body}
       </div>
     </section>
   );
