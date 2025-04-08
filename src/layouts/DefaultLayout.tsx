@@ -5,7 +5,7 @@ export function DefaultLayout() {
   return (
     <div className="font-nunito min-h-screen leading-[1.6]">
       <Header />
-      <main className="bg-base-background flex flex-col items-center pb-12">
+      <main className="bg-base-background flex min-h-lvh flex-col items-center pb-32">
         <Outlet />
       </main>
     </div>
