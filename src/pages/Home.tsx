@@ -22,6 +22,7 @@ export interface Issue {
   user: {
     login: string;
   };
+  pull_request?: object;
 }
 
 export function Home() {
@@ -42,7 +43,10 @@ export function Home() {
       },
     });
 
-    setIssuesInfo(response.data.items);
+    const issues = response.data.items;
+    const onlyIssues = issues.filter((item: Issue) => !item.pull_request);
+
+    setIssuesInfo(onlyIssues);
   }
 
   useEffect(() => {
