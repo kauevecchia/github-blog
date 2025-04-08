@@ -32,10 +32,10 @@ export function Profile() {
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
           <div className="flex justify-between">
-            <h1 className="text-2xl text-white">{userInfo?.name}</h1>
+            <h1 className="text-2xl font-bold text-white">{userInfo?.name}</h1>
             <a
               href={userInfo?.html_url}
-              className="flex cursor-pointer items-center justify-center gap-2"
+              className="hover:border-blue flex cursor-pointer items-center justify-center gap-2 border-b-2 border-transparent"
               target="_blank"
             >
               <span className="text-blue text-xs">GITHUB</span>
