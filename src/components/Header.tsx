@@ -4,7 +4,7 @@ import logo from "../assets/vector.svg";
 
 export function Header() {
   return (
-    <header className="bg-base-profile flex h-[296px] items-center justify-between">
+    <header className="from-base-profile to-base-post flex h-[296px] items-center justify-between bg-gradient-to-br">
       <img src={effectL} alt="" />
       <div className="flex flex-col items-center justify-center gap-5">
         <div className="h-[40px] w-[45px]">
