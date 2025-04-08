@@ -3,6 +3,12 @@ import { Profile } from "../components/Profile";
 import { api } from "../lib/axios";
 import { Post } from "../components/Post";
 import { MagnifyingGlass } from "@phosphor-icons/react";
+import { searchFormSchema } from "../schemas/searchForm";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+type SearchFormInputs = z.infer<typeof searchFormSchema>;
 
 export interface Issue {
   id: number;
@@ -18,6 +24,14 @@ export interface Issue {
 
 export function Home() {
   const [issuesInfo, setIssuesInfo] = useState<Issue[] | null>(null);
+
+  const { register, handleSubmit } = useForm<SearchFormInputs>({
+    resolver: zodResolver(searchFormSchema),
+  });
+
+  function handleSearchPosts(data: SearchFormInputs) {
+    fetchIssues(data.searchInput);
+  }
 
   async function fetchIssues(query: string = "") {
     const response = await api.get("/search/issues", {
@@ -47,11 +61,15 @@ export function Home() {
               {issuesInfo?.length} publicações
             </span>
           </div>
-          <form className="flex items-center justify-center gap-2">
+          <form
+            className="flex items-center justify-center gap-2"
+            onSubmit={handleSubmit(handleSearchPosts)}
+          >
             <input
               type="text"
               placeholder="Buscar conteúdo"
               className="border-base-border placeholder:text-base-label focus:border-blue text-base-text w-full rounded-md border-2 px-4 py-3 focus:outline-none"
+              {...register("searchInput")}
             />
             <button
               type="submit"
@@ -64,10 +82,12 @@ export function Home() {
         </div>
 
         <div className="grid grid-cols-2 gap-6">
-          {issuesInfo ? (
+          {issuesInfo?.length !== 0 ? (
             issuesInfo?.map((issue) => <Post issueInfo={issue} />)
           ) : (
-            <p>Não encontramos resultado para sua pesquisa</p>
+            <p className="text-base-span text-lg">
+              Não encontramos resultado para sua pesquisa
+            </p>
           )}
         </div>
       </div>
