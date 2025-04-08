@@ -14,6 +14,11 @@ import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 export function PostDetails() {
   const [postInfo, setPostInfo] = useState<Issue | null>(null);
 
+  const createdAtDate = new Date(postInfo?.created_at || 0);
+  const now = new Date();
+  const diffInMs = now.getTime() - createdAtDate.getTime();
+  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
   const { issueNumber } = useParams();
 
   useEffect(() => {
@@ -62,7 +67,11 @@ export function PostDetails() {
               </div>
               <div className="flex items-center justify-center gap-2">
                 <img src={calendarSvg} className="h-5 w-5" />
-                <span className="text-base-subtitle">{}</span>
+                <span className="text-base-subtitle">
+                  {diffInDays === 0
+                    ? "Postado hoje"
+                    : `${diffInDays} dia${diffInDays > 1 ? "s" : ""} atrás`}
+                </span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <img src={commentSvg} className="h-5 w-5" />
