@@ -25,6 +25,7 @@ export function PostDetails() {
   const { issueNumber } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchPostInfo();
   }, []);
 
